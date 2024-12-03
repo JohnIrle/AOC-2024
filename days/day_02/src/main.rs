@@ -43,7 +43,7 @@ fn part_1(input: String) -> i32 {
                 match prev.cmp(current) {
                     std::cmp::Ordering::Less => is_down = false,
                     std::cmp::Ordering::Greater => is_up = false,
-                    _ => {
+                    std::cmp::Ordering::Equal => {
                         is_up = false;
                         is_down = false;
                     }
