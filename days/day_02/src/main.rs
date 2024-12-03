@@ -25,16 +25,10 @@ fn main() {
 }
 
 fn part_1(input: String) -> i32 {
-    let lines = input.lines();
-    let mut num_safe = 0;
-    for line in lines {
-        let level = parse_level(line);
-
-        if is_line_safe(level) {
-            num_safe += 1;
-        };
-    }
-    num_safe
+    input
+        .lines()
+        .filter(|line| is_line_safe(parse_level(line)))
+        .count() as i32
 }
 
 fn part_2(input: String) -> i32 {
