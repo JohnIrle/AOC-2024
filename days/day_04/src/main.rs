@@ -46,6 +46,7 @@ fn part_1(input: String) -> i32 {
         }
     }
 
+    // First diagonal
     for row_idx in 0..=chars.len() - forward.len() {
         for col_idx in 0..=chars[0].len() - forward.len() {
             let window: Vec<char> = (0..forward.len())
@@ -60,6 +61,7 @@ fn part_1(input: String) -> i32 {
         }
     }
 
+    // Second Diagonal
     for row_idx in 0..=chars.len() - forward.len() {
         for col_idx in forward.len() - 1..chars[0].len() {
             let window: Vec<char> = (0..forward.len())
