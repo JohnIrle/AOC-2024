@@ -56,7 +56,7 @@ fn part_1(input: String) -> i32 {
             match window {
                 w if w == forward => total += 1,
                 w if w == backward => total += 1,
-                _ => (), // No match, do nothing
+                _ => (),
             }
         }
     }
@@ -71,7 +71,7 @@ fn part_1(input: String) -> i32 {
             match window {
                 w if w == forward => total += 1,
                 w if w == backward => total += 1,
-                _ => (), // No match, do nothing
+                _ => (),
             }
         }
     }
@@ -80,7 +80,40 @@ fn part_1(input: String) -> i32 {
 }
 
 fn part_2(input: String) -> i32 {
-    0
+    let chars: Vec<Vec<char>> = input
+        .lines() // Split the input into lines
+        .map(|line| line.chars().collect()) // Convert each line into a Vec of chars
+        .collect();
+
+    let rows = chars.len();
+    let cols = chars[0].len();
+
+    let forward = ['M', 'A', 'S'];
+    let backward = ['S', 'A', 'M'];
+
+    let mut total = 0;
+
+    for row_idx in 0..=rows - forward.len() {
+        for col_idx in 0..=cols - forward.len() {
+            let top_left_to_bottom = [
+                chars[row_idx][col_idx],
+                chars[row_idx + 1][col_idx + 1],
+                chars[row_idx + 2][col_idx + 2],
+            ];
+            let bottom_left_to_top = [
+                chars[row_idx + 2][col_idx],
+                chars[row_idx + 1][col_idx + 1],
+                chars[row_idx][col_idx + 2],
+            ];
+
+            if (top_left_to_bottom == forward || top_left_to_bottom == backward)
+                && (bottom_left_to_top == forward || bottom_left_to_top == backward)
+            {
+                total += 1;
+            }
+        }
+    }
+    total
 }
 
 #[cfg(test)]
@@ -104,5 +137,24 @@ MXMXAXMASX",
 
         let result = part_1(input);
         assert_eq!(result, 18);
+    }
+
+    #[test]
+    fn part_2_returns_9_with_sample() {
+        let input = String::from(
+            "MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX",
+        );
+
+        let result = part_2(input);
+        assert_eq!(result, 9);
     }
 }
