@@ -120,10 +120,7 @@ fn part_2(input: String) -> i32 {
 mod tests {
     use super::*;
 
-    #[test]
-    fn part_1_returns_18_with_sample() {
-        let input = String::from(
-            "MMMSXXMASM
+    const INPUT: &str = "MMMSXXMASM
 MSAMXMSMSA
 AMXSXMAAMM
 MSAMASMSMX
@@ -132,29 +129,23 @@ XXAMMXXAMA
 SMSMSASXSS
 SAXAMASAAA
 MAMMMXMMMM
-MXMXAXMASX",
-        );
+MXMXAXMASX";
+
+    #[test]
+    fn part_1_returns_18_with_sample() {
+        let input = String::from(INPUT);
 
         let result = part_1(input);
+
         assert_eq!(result, 18);
     }
 
     #[test]
     fn part_2_returns_9_with_sample() {
-        let input = String::from(
-            "MMMSXXMASM
-MSAMXMSMSA
-AMXSXMAAMM
-MSAMASMSMX
-XMASAMXAMM
-XXAMMXXAMA
-SMSMSASXSS
-SAXAMASAAA
-MAMMMXMMMM
-MXMXAXMASX",
-        );
+        let input = String::from(INPUT);
 
         let result = part_2(input);
+
         assert_eq!(result, 9);
     }
 }

@@ -46,16 +46,16 @@ fn parse_lines(input: &str) -> (Vec<i32>, Vec<i32>) {
 mod tests {
     use super::*;
 
-    #[test]
-    fn part1_returns_11_with_example_input() {
-        let input = String::from(
-            "3   4
+    const INPUT: &str = "3   4
 4   3
 2   5
 1   3
 3   9
-3   3",
-        );
+3   3";
+
+    #[test]
+    fn part1_returns_11_with_example_input() {
+        let input = String::from(INPUT);
 
         let total = part_1(input);
         assert_eq!(total, 11);
@@ -63,14 +63,7 @@ mod tests {
 
     #[test]
     fn part2_returns_31_with_example_input() {
-        let input = String::from(
-            "3   4
-4   3
-2   5
-1   3
-3   9
-3   3",
-        );
+        let input = String::from(INPUT);
 
         let total = part_2(input);
         assert_eq!(total, 31);

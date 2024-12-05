@@ -61,16 +61,16 @@ fn is_line_safe(level: Vec<i32>) -> bool {
 mod tests {
     use super::*;
 
-    #[test]
-    fn part_1_returns_2_for_example_input() {
-        let input = String::from(
-            "7 6 4 2 1
+    const INPUT: &str = "7 6 4 2 1
 1 2 7 8 9
 9 7 6 2 1
 1 3 2 4 5
 8 6 4 4 1
-1 3 6 7 9",
-        );
+1 3 6 7 9";
+
+    #[test]
+    fn part_1_returns_2_for_example_input() {
+        let input = String::from(INPUT);
 
         let result = part_1(input);
 
@@ -79,14 +79,7 @@ mod tests {
 
     #[test]
     fn part_2_returns_4_for_example_input() {
-        let input = String::from(
-            "7 6 4 2 1
-1 2 7 8 9
-9 7 6 2 1
-1 3 2 4 5
-8 6 4 4 1
-1 3 6 7 9",
-        );
+        let input = String::from(INPUT);
 
         let result = part_2(input);
 
